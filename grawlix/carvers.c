@@ -1,4 +1,4 @@
-#include "grawlix.h"
+#include "carvers.h"
 
 // ALDOUS-BRODER
 // Starting from any cell, move randomly to an adjacent cell, removing the edge
@@ -52,3 +52,4 @@ carve_binary_tree(Maze *maze, int bias)
 				? choices[1]
 				: choices[random() % 2];
 }
+

@@ -75,3 +75,4 @@ traverse_edge(Maze* maze, int from, int to)
 
 	return 1;
 }
+
