@@ -9,12 +9,12 @@ main(int argc, char *argv[])
 	};
 
 	int size = argc > 1 ? atoi(argv[1]) : 8; // Rudimentary CLI
-        // An address is sufficiently random. (+1 Recycling)
-        // 2012-07-02 gbchaosmaster - ...or not. Warns on some machines.
-        // Doing it the normal way until we can figure out how to make this
-        // cleverness work for everybody.
+	// An address is sufficiently random. (+1 Recycling)
+	// 2012-07-02 gbchaosmaster - ...or not. Warns on some machines.
+	// Doing it the normal way until we can figure out how to make this
+	// cleverness work for everybody.
 	//srandom((int) &size);
-        srandom(time(NULL));
+	srandom(time(NULL));
 
 	Maze test_maze = init_maze(size, size, 15);
 	carve_maze(&test_maze, carvers[BINARY_TREE], SW); //
