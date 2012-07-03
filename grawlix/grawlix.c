@@ -1,8 +1,10 @@
+#include "grawlix.h"
+
 // Initial a maze of the given dimensions and set each of its cells to `state`,
 // which represents everything known about a particular cell. The four low bits
 // represent NESW walls, respectively, and 16 is turned on to indicate that the
 // cell has already been visited.
-static Maze
+Maze
 init_maze(int width, int height, char state) {
 	Maze new_maze = {width, height, width * height, NULL};
 	new_maze.cells = malloc(new_maze.size); // `state` will always be 1 byte.
@@ -11,13 +13,13 @@ init_maze(int width, int height, char state) {
 }
 
 // Single point of entry for all carving procedures. (+1 Modularization)
-static void
+void
 carve_maze(Maze *maze, algorithm carver, int bias)
 {
 	carver(maze, bias);
 }
 
-static void
+void
 reset_maze(Maze *maze, char state)
 {
 	int i;
@@ -27,7 +29,7 @@ reset_maze(Maze *maze, char state)
 
 // TODO: Generalize this a bit more and figure out how best to incorporate the
 // missing borders; kind of tricky given that they're not always the same two.
-static void
+void
 display_maze(Maze *maze)
 {
 	int i;
@@ -40,7 +42,7 @@ display_maze(Maze *maze)
 	}
 }
 
-static void
+void
 destroy_maze(Maze *maze)
 {
 	free(maze->cells);
