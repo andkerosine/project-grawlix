@@ -1,3 +1,5 @@
+#include "grawlix.h"
+
 // ALDOUS-BRODER
 // Starting from any cell, move randomly to an adjacent cell, removing the edge
 // between them if the destination has not yet been visited. Continue until all
