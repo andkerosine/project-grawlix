@@ -35,14 +35,15 @@ configure:
 $(EXE): $(OPATHS)
 	$(CC) $(LDFLAGS) $(OPATHS) -o $@
 
-$(OBJDIR)/grawlix.o: $(SRCDIR)/grawlix.h
+$(OBJDIR)/grawlix.o: $(SRCDIR)/grawlix.h $(SRCDIR)/types.h
 	$(CC) $(CFLAGS) $(SRCDIR)/grawlix.c
 
-$(OBJDIR)/carvers.o: $(SRCDIR)/grawlix.h
+$(OBJDIR)/carvers.o: $(SRCDIR)/grawlix.h $(SRCDIR)/carvers.h $(SRCDIR)/types.h
 	$(CC) $(CFLAGS) $(SRCDIR)/carvers.c
 
-$(OBJDIR)/experiments.o: $(SRCDIR)/grawlix.h
-	$(CC) $(CFLAGS) experiments.c
+$(OBJDIR)/experiments.o: $(SRCDIR)/grawlix.h $(SRCDIR)/carvers.h \
+	                 experiments.h $(SRCDIR)/types.h
+	$(CC) $(CFLAGS) -Igrawlix experiments.c
 
 clean:
 	mkdir -p $(OBJDIR) && rm -r $(OBJDIR)

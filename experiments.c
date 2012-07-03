@@ -1,4 +1,4 @@
-#include "grawlix/grawlix.h"
+#include "experiments.h"
 
 int
 main(int argc, char *argv[])
@@ -8,8 +8,13 @@ main(int argc, char *argv[])
 		carve_binary_tree
 	};
 
-	int size = argc > 1 ? atoi(argv[1]) : 8; // rudimentary CLI
-	srandom((int) &size); // An address is sufficiently random. (+1 Recycling)
+	int size = argc > 1 ? atoi(argv[1]) : 8; // Rudimentary CLI
+        // An address is sufficiently random. (+1 Recycling)
+        // 2012-07-02 gbchaosmaster - ...or not. Warns on some machines.
+        // Doing it the normal way until we can figure out how to make this
+        // cleverness work for everybody.
+	//srandom((int) &size);
+        srandom(time(NULL));
 
 	Maze test_maze = init_maze(size, size, 15);
 	carve_maze(&test_maze, carvers[BINARY_TREE], SW); //
@@ -23,3 +28,4 @@ main(int argc, char *argv[])
 	destroy_maze(&test_maze);
 	return 0;
 }
+
