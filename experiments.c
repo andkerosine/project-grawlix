@@ -3,6 +3,11 @@
 int
 main(int argc, char *argv[])
 {
+	algorithm carvers[] = {
+		carve_aldous_broder,
+		carve_binary_tree
+	};
+
 	int size = argc > 1 ? atoi(argv[1]) : 8; // rudimentary CLI
 	srandom((int) &size); // An address is sufficiently random. (+1 Recycling)
 
